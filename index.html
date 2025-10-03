@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>🎉 Feliz Cumpleaños Ivonne Anais 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: url('https://wallpapers.com/images/hd/one-piece-straw-hat-crew-celebration-3f3f7b.jpg') no-repeat center center/cover;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      margin-top: 30px;
+      font-size: 3em;
+      text-shadow: 3px 3px 6px #000;
+    }
+    .btn {
+      display: inline-block;
+      margin: 20px;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 8px;
+      background: #ffcc00;
+      color: #000;
+      font-weight: bold;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #ffaa00;
+    }
+    .cake-container {
+      margin-top: 30px;
+      display: none;
+      position: relative;
+    }
+    .cake {
+      width: 200px;
+      cursor: pointer;
+    }
+    .age {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3em;
+      font-weight: bold;
+      color: gold;
+      text-shadow: 2px 2px 5px #000;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎉 ¡Feliz Cumpleaños Ivonne Anais! 🎉</h1>
+<p>¡Da click para ver la sorpresa! 🎂🎶</p>
+<button class="btn" id="showCakeBtn">🎁 Mostrar pastel y Las Mañanitas</button>
+
+<div class="cake-container" id="cakeContainer">
+  <img src="https://i.imgur.com/jI1kB6S.png" alt="Pastel" class="cake" id="cake">
+  <div class="age">25</div>
+</div>
+
+<!-- Audio de Las Mañanitas -->
+<audio id="mananitas" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+<!-- Audio tema One Piece -->
+<audio id="onepiece" src="https://vgmsite.com/soundtracks/one-piece-original-soundtrack/one-piece-op01.mp3" autoplay loop></audio>
+
+<script>
+  const showCakeBtn = document.getElementById("showCakeBtn");
+  const cakeContainer = document.getElementById("cakeContainer");
+  const mananitas = document.getElementById("mananitas");
+
+  showCakeBtn.addEventListener("click", () => {
+    cakeContainer.style.display = "inline-block";
+    mananitas.play();
+    showCakeBtn.style.display = "none";
+  });
+</script>
+
+</body>
+</html>

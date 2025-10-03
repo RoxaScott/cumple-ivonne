@@ -1,88 +1,195 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>🎉 Feliz Cumpleaños Ivonne Anais 🎂</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Comic Sans MS', cursive;
-      background: url('https://wallpapers.com/images/hd/one-piece-straw-hat-crew-celebration-3f3f7b.jpg') no-repeat center center/cover;
-      background-size: cover;
-      color: #fff;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    h1 {
-      margin-top: 30px;
-      font-size: 3em;
-      text-shadow: 3px 3px 6px #000;
-    }
-    .btn {
-      display: inline-block;
-      margin: 20px;
-      padding: 15px 25px;
-      border: none;
-      border-radius: 8px;
-      background: #ffcc00;
-      color: #000;
-      font-weight: bold;
-      font-size: 1.2em;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #ffaa00;
-    }
-    .cake-container {
-      margin-top: 30px;
-      display: none;
-      position: relative;
-    }
-    .cake {
-      width: 200px;
-      cursor: pointer;
-    }
-    .age {
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 3em;
-      font-weight: bold;
-      color: gold;
-      text-shadow: 2px 2px 5px #000;
-      pointer-events: none;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>🎉 Feliz 25 Ivonne Anais 🎂</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: url('fondo.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3em;
+  margin-top: 30px;
+  text-shadow: 3px 3px 6px #000;
+}
+
+.cake-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.cake {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.cake:hover {
+  transform: scale(1.1);
+}
+
+.age {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3em;
+  font-weight: bold;
+  color: #ffdf00;
+  text-shadow: 0 0 10px #000, 0 0 20px #ff0000;
+  pointer-events: none;
+}
+
+.btn {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #ffaa00;
+}
+
+/* Personajes flotando */
+.character {
+  position: absolute;
+  width: 120px;
+  animation: float 6s ease-in-out infinite;
+}
+.luffy { top: 20%; left: 5%; animation-delay: 0s; }
+.zoro { top: 50%; left: 80%; animation-delay: 2s; }
+.nami { top: 70%; left: 10%; animation-delay: 4s; }
+.chopper { top: 25%; left: 70%; animation-delay: 6s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+/* Mensaje sorpresa */
+.surprise {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #ffdf00;
+  text-shadow: 0 0 10px #fff, 0 0 20px #ff0000, 0 0 30px #ff6600;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  animation: showMessage 3s ease-in-out forwards;
+  animation-delay: 6s;
+  z-index: 20;
+}
+
+@keyframes showMessage {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Recuadro para fotografía */
+.photo-frame {
+  margin: 20px auto;
+  width: 220px;
+  height: 220px;
+  border: 5px solid gold;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px #000;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 15;
+}
+</style>
 </head>
 <body>
+<h1>🎉 ¡Feliz 25 cumpleaños Ivonne Anais! 🎉</h1>
 
-<h1>🎉 ¡Feliz Cumpleaños Ivonne Anais! 🎉</h1>
-<p>¡Da click para ver la sorpresa! 🎂🎶</p>
-<button class="btn" id="showCakeBtn">🎁 Mostrar pastel y Las Mañanitas</button>
-
-<div class="cake-container" id="cakeContainer">
-  <img src="https://i.imgur.com/jI1kB6S.png" alt="Pastel" class="cake" id="cake">
+<div class="cake-container">
+  <img src="pastel.png" alt="Pastel" class="cake" id="cake">
   <div class="age">25</div>
 </div>
 
-<!-- Audio de Las Mañanitas -->
-<audio id="mananitas" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-<!-- Audio tema One Piece -->
-<audio id="onepiece" src="https://vgmsite.com/soundtracks/one-piece-original-soundtrack/one-piece-op01.mp3" autoplay loop></audio>
+<div class="btn" onclick="playSong()">🎶 Reproducir Las Mañanitas</div>
+<audio id="song" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<!-- Recuadro para foto -->
+<div class="photo-frame">
+  <img src="ivonne.png" alt="Ivonne">
+</div>
+
+<!-- Personajes flotando -->
+<img src="luffy.png" alt="Luffy" class="character luffy">
+<img src="zoro.png" alt="Zoro" class="character zoro">
+<img src="nami.png" alt="Nami" class="character nami">
+<img src="chopper.png" alt="Chopper" class="character chopper">
+
+<div class="surprise">✨ ¡Que cumplas muchos más, Ivonne! ✨</div>
+
+<canvas id="confetti"></canvas>
 
 <script>
-  const showCakeBtn = document.getElementById("showCakeBtn");
-  const cakeContainer = document.getElementById("cakeContainer");
-  const mananitas = document.getElementById("mananitas");
+function playSong(){document.getElementById("song").play();}
 
-  showCakeBtn.addEventListener("click", () => {
-    cakeContainer.style.display = "inline-block";
-    mananitas.play();
-    showCakeBtn.style.display = "none";
+const cake = document.getElementById("cake");
+const confetti = document.getElementById("confetti");
+const ctx = confetti.getContext("2d");
+confetti.width = window.innerWidth;
+confetti.height = window.innerHeight;
+
+let pieces = [];
+for(let i=0;i<200;i++){
+  pieces.push({
+    x: Math.random()*confetti.width,
+    y: Math.random()*confetti.height-confetti.height,
+    w: 10,
+    h: 10,
+    color: `hsl(${Math.random()*360},100%,50%)`,
+    speed: Math.random()*5+2
   });
-</script>
+}
 
+function draw(){
+  ctx.clearRect(0,0,confetti.width,confetti.height);
+  for(let p of pieces){
+    ctx.fillStyle=p.color;
+    ctx.fillRect(p.x,p.y,p.w,p.h);
+    p.y+=p.speed;
+    if(p.y>confetti.height)p.y=-10;
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+
+cake.addEventListener("click",()=>{
+  for(let p of pieces){ p.y=Math.random()*-confetti.height; }
+});
+</script>
 </body>
 </html>
